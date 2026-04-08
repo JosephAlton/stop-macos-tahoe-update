@@ -8,7 +8,7 @@
     <dict>
       <key>PayloadType</key><string>com.apple.applicationaccess</string>
       <key>PayloadVersion</key><integer>1</integer>
-      <key>PayloadIdentifier</key><string>com.adroa.restrictions.majoronly</string>
+      <key>PayloadIdentifier</key><string>org.stayonsequoia.restrictions.majoronly</string>
       <key>PayloadUUID</key><string>3F2504E0-4F89-11D3-9A0C-0305E82C3301</string>
       <key>PayloadEnabled</key><true/>
       <key>PayloadDisplayName</key><string>Tahoe Major Upgrade Deferral</string>
@@ -27,7 +27,7 @@
     <dict>
       <key>PayloadType</key><string>com.apple.SoftwareUpdate</string>
         <key>PayloadVersion</key><integer>1</integer>
-        <key>PayloadIdentifier</key><string>com.adroa.softwareupdate.security</string>
+        <key>PayloadIdentifier</key><string>org.stayonsequoia.softwareupdate.security</string>
       <key>PayloadUUID</key><string>3F2504E0-4F89-11D3-9A0C-0305E82C3302</string>
       <key>PayloadEnabled</key><true/>
       <key>PayloadDisplayName</key><string>Automatic Security Updates</string>
@@ -41,9 +41,9 @@
 
   <key>PayloadType</key><string>Configuration</string>
   <key>PayloadVersion</key><integer>1</integer>
-  <key>PayloadIdentifier</key><string>com.adroa.stayonsequoia</string>
+  <key>PayloadIdentifier</key><string>org.stayonsequoia.profile</string>
   <key>PayloadUUID</key><string>3F2504E0-4F89-11D3-9A0C-0305E82C3303</string>
   <key>PayloadDisplayName</key><string>Stay on Sequoia: Block Tahoe, Allow Security</string>
-  <key>PayloadOrganization</key><string>adroa</string>
+  <key>PayloadOrganization</key><string>StayOnSequoia Community</string>
 </dict>
 </plist>
