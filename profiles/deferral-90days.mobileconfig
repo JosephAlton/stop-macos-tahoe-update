@@ -4,22 +4,38 @@
 <dict>
   <key>PayloadContent</key>
   <array>
+    <!-- PAYLOAD 1: Defer ONLY Major OS upgrades (Tahoe) -->
     <dict>
       <key>PayloadType</key><string>com.apple.applicationaccess</string>
       <key>PayloadVersion</key><integer>1</integer>
-      <key>PayloadIdentifier</key><string>org.stayonsequoia.restrictions</string>
-      <key>PayloadUUID</key><string>PAYLOAD-UUID</string>
+      <key>PayloadIdentifier</key><string>org.stayonsequoia.restrictions.majoronly</string>
+      <key>PayloadUUID</key><string>PAYLOAD1-UUID</string>
       <key>PayloadEnabled</key><true/>
-      <key>PayloadDisplayName</key><string>Software Update Deferrals</string>
+      <key>PayloadDisplayName</key><string>Tahoe Major Upgrade Deferral</string>
 
-      <!-- Major upgrade deferral -->
+      <!-- Block Tahoe (26.x) for 90 days (maximum allowed) -->
       <key>forceDelayedMajorSoftwareUpdates</key><true/>
       <key>enforcedSoftwareUpdateMajorOSDeferredInstallDelay</key><integer>90</integer>
-
-      <!-- Optional (set to your taste) -->
+      
+      <!-- Explicitly allow Sequoia minor updates immediately (0 days) -->
       <key>forceDelayedSoftwareUpdates</key><true/>
-      <key>enforcedSoftwareUpdateMinorOSDeferredInstallDelay</key><integer>30</integer>
-      <key>enforcedSoftwareUpdateNonOSDeferredInstallDelay</key><integer>30</integer>
+      <key>enforcedSoftwareUpdateMinorOSDeferredInstallDelay</key><integer>0</integer>
+      <key>enforcedSoftwareUpdateNonOSDeferredInstallDelay</key><integer>0</integer>
+    </dict>
+    
+    <!-- PAYLOAD 2: Ensure automatic security updates for Sequoia -->
+    <dict>
+      <key>PayloadType</key><string>com.apple.SoftwareUpdate</string>
+        <key>PayloadVersion</key><integer>1</integer>
+        <key>PayloadIdentifier</key><string>org.stayonsequoia.softwareupdate.security</string>
+      <key>PayloadUUID</key><string>PAYLOAD2-UUID</string>
+      <key>PayloadEnabled</key><true/>
+      <key>PayloadDisplayName</key><string>Automatic Security Updates</string>
+      
+      <key>AutomaticCheckEnabled</key><true/>
+      <key>AutomaticDownload</key><true/>
+      <key>CriticalUpdateInstall</key><true/>
+      <key>ConfigDataInstall</key><true/>
     </dict>
   </array>
 
@@ -27,7 +43,7 @@
   <key>PayloadVersion</key><integer>1</integer>
   <key>PayloadIdentifier</key><string>org.stayonsequoia.profile</string>
   <key>PayloadUUID</key><string>PROFILE-UUID</string>
-  <key>PayloadDisplayName</key><string>Stay on Sequoia: Update Deferrals</string>
+  <key>PayloadDisplayName</key><string>Stay on Sequoia: Block Tahoe, Allow Security</string>
   <key>PayloadOrganization</key><string>StayOnSequoia Community</string>
 </dict>
 </plist>

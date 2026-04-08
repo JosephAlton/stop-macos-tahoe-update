@@ -7,19 +7,25 @@ if [[ ! -f "$PROFILE" ]]; then
   exit 1
 fi
 
-# Generate two distinct UUIDs
-UUID1=$(uuidgen)
-UUID2=$(uuidgen)
+# Generate distinct UUIDs for each payload + profile wrapper
+PAYLOAD1_UUID=$(uuidgen)
+PAYLOAD2_UUID=$(uuidgen)
+PROFILE_UUID=$(uuidgen)
 
 # Create profile with UUIDs inserted
 TEMP_DIR=$(mktemp -d)
 TEMP_PROFILE="$TEMP_DIR/profile.mobileconfig"
 trap 'rm -rf "$TEMP_DIR"' EXIT
-sed -e "s/PAYLOAD-UUID/$UUID1/" -e "s/PROFILE-UUID/$UUID2/" "$PROFILE" > "$TEMP_PROFILE"
+sed \
+  -e "s/PAYLOAD1-UUID/$PAYLOAD1_UUID/" \
+  -e "s/PAYLOAD2-UUID/$PAYLOAD2_UUID/" \
+  -e "s/PROFILE-UUID/$PROFILE_UUID/" \
+  "$PROFILE" > "$TEMP_PROFILE"
 
 echo "Installing profile: $PROFILE"
-echo "  Payload UUID: $UUID1"
-echo "  Profile UUID: $UUID2"
+echo "  Payload 1 UUID: $PAYLOAD1_UUID"
+echo "  Payload 2 UUID: $PAYLOAD2_UUID"
+echo "  Profile UUID: $PROFILE_UUID"
 
 # Try CLI first; fall back to UI if it fails
 if sudo /usr/bin/profiles install -type configuration -path "$TEMP_PROFILE" 2>/dev/null; then
